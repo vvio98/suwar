@@ -33,11 +33,11 @@ function walk(dir) { return readdirSync(dir).flatMap(f => { const p = join(dir, 
 
 TOKEN = await token();
 console.log(`Deploying to site "${site}" (project ${project})`);
-try { await call('GET', `/sites/${site}`); }
+try { await call('GET', `/projects/${project}/sites/${site}`); }
 catch (e) {
   if (e.status !== 404) throw e;
   console.log('Site not found, creating it…');
-  await call('POST', `/projects/${project}/sites?siteId=${site}`, {});
+  try { await call('POST', `/projects/${project}/sites?siteId=${site}`, {}); } catch (e2) { if (e2.status !== 409) throw e2; }
 }
 
 const files = {}, blobs = {};
