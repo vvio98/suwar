@@ -7,7 +7,7 @@
 النشر تلقائي على Firebase Hosting: أي `push` على فرع `main` يُنشر خلال دقيقة تقريبًا (راجع تبويب **Actions**).
 
 ### الإعداد لأول مرة
-1. استبدل `YOUR_FIREBASE_PROJECT_ID` بمعرّف مشروعك في Firebase داخل الملفين:
+1. معرّف مشروع Firebase هو `suwar-sa`، ومحدّد في الملفين:
    - `.firebaserc`
    - `.github/workflows/firebase-deploy.yml`
 2. أضف مفتاح حساب الخدمة في GitHub باسم `FIREBASE_SERVICE_ACCOUNT`:
