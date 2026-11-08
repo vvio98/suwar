@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="65.0" height="114.0" viewBox="155.0 131.0 65.0 114.0">
+<defs>
+<clipPath id="clip_1">
+<path transform="matrix(.24,0,0,.24,0,0)" d="M0 0H1562.5V1562.5H0Z" clip-rule="evenodd"/>
+</clipPath>
+<clipPath id="clip_2">
+<path transform="matrix(.24,0,0,.24,0,0)" d="M0 0H1562.5V1562.5H0Z" clip-rule="evenodd"/>
+</clipPath>
+<clipPath id="clip_3">
+<path transform="matrix(.24,0,0,.24,0,0)" d="M0 0H1562.5V1562.5H0Z" clip-rule="evenodd"/>
+</clipPath>
+<path id="font_4_58" d="M.029006958 .28300477 .31199647 .56700137V0L.029006958-.28300477V.28300477Z"/>
+<path id="font_4_2" d="M.029006958 .56700137 .31199647 .8509979V0H.029006958V.56700137Z"/>
+</defs>
+
+
+<g clip-path="url(#clip_3)">
+<use data-text="&#x0631;" xlink:href="#font_4_58" transform="matrix(96.615009,0,0,-96.615009,154.54688,215.54416)" fill="#1965fa"/>
+<use data-text="&#x0627;" xlink:href="#font_4_2" transform="matrix(96.615009,0,0,-96.615009,187.5,215.54416)" fill="#c5fb22"/>
+</g>
+</svg>

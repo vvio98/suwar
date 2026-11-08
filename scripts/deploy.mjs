@@ -46,7 +46,7 @@ for (const p of walk('public')) {
   const hash = createHash('sha256').update(gz).digest('hex');
   files['/' + relative('public', p).split('\\').join('/')] = hash; blobs[hash] = gz;
 }
-const version = await call('POST', `/sites/${site}/versions`, { config: { cleanUrls: true, headers: [{ glob: '**/*.html', headers: { 'Cache-Control': 'no-cache' } }] } });
+const version = await call('POST', `/sites/${site}/versions`, { config: { cleanUrls: true, headers: [{ glob: '**/*.html', headers: { 'Cache-Control': 'no-cache' } }, { glob: '/assets/**', headers: { 'Cache-Control': 'public, max-age=3600' } }] } });
 console.log('Version', version.name);
 const pop = await call('POST', `/${version.name}:populateFiles`, { files });
 for (const h of pop.uploadRequiredHashes || []) { await call('POST', `${pop.uploadUrl}/${h}`, blobs[h], true); console.log('Uploaded', h.slice(0, 10)); }
