@@ -178,8 +178,7 @@
   function applyTheme(th, animate) {
     if (animate) { html.classList.add('theme-anim'); setTimeout(() => html.classList.remove('theme-anim'), 400); }
     html.setAttribute('data-theme', th);
-    $$('.brand img').forEach(img => { img.src = th === 'light' && img.closest('.header, footer') ? 'assets/img/logo-dark.svg' : 'assets/img/logo.svg'; });
-    if (metaTheme) metaTheme.content = th === 'light' ? '#f8faf7' : '#080a09';
+        if (metaTheme) metaTheme.content = '#080a09';
     if (themeBtn) themeBtn.setAttribute('aria-label', th === 'light' ? t('تفعيل الوضع الداكن', 'Switch to dark mode') : t('تفعيل الوضع الفاتح', 'Switch to light mode'));
   }
   const savedTheme = () => { try { return localStorage.getItem('suwar-theme'); } catch (e) { return null; } };

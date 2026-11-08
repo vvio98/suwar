@@ -311,15 +311,6 @@ html{scroll-padding-top:90px}
 html.theme-anim body,html.theme-anim body *{transition:background-color .3s ease,color .3s ease,border-color .3s ease!important}
 
 /* ===== LIGHT MODE (dark sections become light; hero & 3D stage stay dark) ===== */
-[data-theme=light] body{background:var(--paper)}
-[data-theme=light] .header{background:rgba(248,250,247,.9);border-bottom-color:#0000000f;color:var(--ink)}
-[data-theme=light] .header.scrolled{background:rgba(248,250,247,.86);box-shadow:0 8px 30px #0000001a}
-[data-theme=light] .nav{color:#3d4738}
-[data-theme=light] .nav a:hover,[data-theme=light] .nav a[aria-current=page]{color:var(--blue)}
-[data-theme=light] .lang-toggle,[data-theme=light] .theme-toggle{color:#2c3526;border-color:#00000024}
-[data-theme=light] .lang-toggle:hover,[data-theme=light] .theme-toggle:hover{color:var(--blue);border-color:var(--blue)}
-[data-theme=light] .menu-toggle{color:var(--ink)}
-@media(max-width:700px){[data-theme=light] .nav{background:var(--paper)}[data-theme=light] .nav a{border-bottom-color:#0000001a}}
 [data-theme=light] .dark-alt,[data-theme=light] .experience{background:#eef2ea;color:var(--ink)}
 [data-theme=light] .security{background:var(--paper);color:var(--ink)}
 [data-theme=light] .experience{border-top-color:#0000000d}
@@ -359,14 +350,6 @@ html.theme-anim body,html.theme-anim body *{transition:background-color .3s ease
 [data-theme=light] .ex-tags span{color:#4a5544;border-color:#0000001c}
 [data-theme=light] .ex-go{color:var(--blue)}
 [data-theme=light] .explore-card .ex-icon{background:#1965fa14;color:var(--blue)}
-[data-theme=light] footer{background:#eef2ea;color:var(--ink);border-top:1px solid var(--line)}
-[data-theme=light] .footer-main{border-bottom-color:var(--line)}
-[data-theme=light] .footer-main p{color:#5f6a5a}
-[data-theme=light] .footer-main>a:last-child{color:#3d4738}
-[data-theme=light] .footer-main>a:last-child:hover,[data-theme=light] .footer-links a:hover,[data-theme=light] .footer-bottom a:hover{color:var(--blue)}
-[data-theme=light] .footer-links{color:#4a5544;border-bottom-color:var(--line)}
-[data-theme=light] .footer-bottom{color:#6a7365}
-[data-theme=light] .socials a{border-color:#00000022;color:#3d4738}
 
 /* ===== DARK MODE (light sections become dark) ===== */
 [data-theme=dark]{--line:#ffffff17;color-scheme:dark}
@@ -411,3 +394,11 @@ html.theme-anim body,html.theme-anim body *{transition:background-color .3s ease
 [data-theme=dark] .price-card .button-dark{background:#fff;color:var(--ink)}
 [data-theme=dark] .calc>.container,[data-theme=dark] .journey>.container{border-top-color:#ffffff14}
 .form-card,.demo,.lesson{color-scheme:light}
+
+/* ===== Glass header (both themes) ===== */
+.header{background:rgba(10,13,10,.55);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.header.scrolled{background:linear-gradient(180deg,rgba(10,13,10,.66),rgba(10,13,10,.56));box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.06);border-bottom-color:rgba(255,255,255,.1)}
+.header .nav a,.header .lang-toggle,.header .theme-toggle{text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.header .lang-toggle,.header .theme-toggle{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.header,.header.scrolled{background:rgba(10,13,10,.92)}}
+@media(max-width:700px){.nav{background:rgba(10,13,10,.94);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}}
