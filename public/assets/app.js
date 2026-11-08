@@ -172,6 +172,15 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
   window.matchMedia('(min-width: 701px)').addEventListener('change', e => { if (e.matches) closeMenu(); });
 
+  /* ---------- Sticky header ---------- */
+  const headerEl = $('.header');
+  if (headerEl) {
+    let ticking = false;
+    const onScroll = () => { headerEl.classList.toggle('scrolled', window.scrollY > 24); ticking = false; };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    onScroll();
+  }
+
   /* ---------- Tabs ---------- */
   const tabs = $$('[role="tab"]');
   function activateTab(tab, focus = false) {
