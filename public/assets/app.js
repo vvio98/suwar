@@ -172,6 +172,25 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
   window.matchMedia('(min-width: 701px)').addEventListener('change', e => { if (e.matches) closeMenu(); });
 
+  /* ---------- Theme ---------- */
+  const themeBtn = $('#theme-toggle');
+  const metaTheme = $('meta[name=theme-color]');
+  function applyTheme(th, animate) {
+    if (animate) { html.classList.add('theme-anim'); setTimeout(() => html.classList.remove('theme-anim'), 400); }
+    html.setAttribute('data-theme', th);
+    $$('.brand img').forEach(img => { img.src = th === 'light' && img.closest('.header, footer') ? 'assets/img/logo-dark.svg' : 'assets/img/logo.svg'; });
+    if (metaTheme) metaTheme.content = th === 'light' ? '#f8faf7' : '#080a09';
+    if (themeBtn) themeBtn.setAttribute('aria-label', th === 'light' ? t('تفعيل الوضع الداكن', 'Switch to dark mode') : t('تفعيل الوضع الفاتح', 'Switch to light mode'));
+  }
+  const savedTheme = () => { try { return localStorage.getItem('suwar-theme'); } catch (e) { return null; } };
+  applyTheme(html.getAttribute('data-theme') || 'dark');
+  themeBtn?.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    try { localStorage.setItem('suwar-theme', next); } catch (e) {}
+    applyTheme(next, true); track('switch_theme', { theme: next });
+  });
+  window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener?.('change', e => { if (!savedTheme()) applyTheme(e.matches ? 'dark' : 'light', true); });
+
   /* ---------- Sticky header ---------- */
   const headerEl = $('.header');
   if (headerEl) {
@@ -659,6 +678,7 @@
     $('#year').textContent = fmt(new Date().getFullYear()).replace(/[٬,]/g, '');
     $$('.form-card .err').forEach(e => e.textContent = '');
     $$('[aria-invalid=true]').forEach(e => e.removeAttribute('aria-invalid'));
+    applyTheme(html.getAttribute('data-theme') || 'dark');
     renderCities(); paintSwatches(); renderSim(); renderCalc(); renderLesson();
     try { localStorage.setItem('suwar-lang', next); } catch (e) {}
   }
